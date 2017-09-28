@@ -1,0 +1,2 @@
+可以拆為三個子套件(如toconsole, tofile, tozipfile)，每個子套件共用同一個IReagrd.java，
+但各自有獨立的MainApp.java
