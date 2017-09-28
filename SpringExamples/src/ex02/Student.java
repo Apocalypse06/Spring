@@ -99,6 +99,11 @@ public class Student {
 				+ ", examDate=" + examDate + ", hobby=" + hobby + ", talent=" + Arrays.toString(talent) + ", pet=" + pet
 				+ ", nullObj=" + nullObj + "]";
 	}
-	
+	public void initMethod() {
+		System.out.println("Student物件建立中");
+	}
+	public void destroyMethod() {
+		System.out.println("Student 物件回收完畢");
+	}
 
 }

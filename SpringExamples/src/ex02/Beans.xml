@@ -60,8 +60,10 @@
 			<ref bean="snoopy"></ref>
 		</entry>
 	</util:map>
-	<bean id="student" class="ex02.Student" scope="singleton" p:name="張君雅"
+	<bean id="student" class="ex02.Student" scope="singleton"
+		init-method="initMethod" destroy-method="destroyMethod" p:name="張君雅"
 		p:height="180" p:weight="80" p:birthday-ref="birthday" p:examDate-ref="examDate"
-		p:hobby-ref="hobbies" p:talent-ref="talent1" p:pet-ref="petmap" p:nullObj="#{null}">
+		p:hobby-ref="hobbies" p:talent-ref="talent1" p:pet-ref="petmap"
+		p:nullObj="#{null}">
 	</bean>
 </beans>
