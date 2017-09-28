@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	<bean id='sdf' class="java.text.SimpleDateFormat">
+		<constructor-arg value="yyyy-MM-dd HH:mm:ss"></constructor-arg>
+	</bean>
+
+	<bean id="birthday" factory-bean="sdf" factory-method="parse">
+		<constructor-arg value="1986-10-09 15:25:30"></constructor-arg>
+	</bean>
+	<bean id='birth' class="java.util.Date"></bean>
+	<bean id='examDate' class='java.sql.Date' factory-method="valueOf">
+		<constructor-arg value="2017-10-15"></constructor-arg>
+	</bean>
+
+	<bean id='hobbies' class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>登山</value>
+				<value>聽音樂</value>
+				<value>看電影</value>
+				<value>聊天</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id='talent0' class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>修電腦</value>
+				<value>算命</value>
+				<value>星座</value>
+				<value>聊天</value>
+			</list>
+
+		</constructor-arg>
+	</bean>
+	<!-- <util:list id="arrayId"> -->
+	<!-- <array value-type="java.lang.String"> -->
+	<!-- <value>修電腦</value> -->
+	<!-- <value>算命</value> -->
+	<!-- <value>星座</value> -->
+	<!-- <value>聊天</value> -->
+	<!-- </array> -->
+	<!-- </util:list> -->
+
+	<bean id='talent1' factory-bean="talent0" factory-method="toArray"></bean>
+	<bean id='kitty' class="ex02.pets.Cat" p:name="凱蒂貓"></bean>
+	<bean id='snoopy' class="ex02.pets.Tiger" p:name="史奴比"></bean>
+	<util:map id='petmap' map-class="java.util.HashMap">
+		<entry key='an1'>
+			<ref bean="kitty"></ref>
+		</entry>
+		<entry key='an2'>
+			<ref bean="snoopy"></ref>
+		</entry>
+	</util:map>
+	<bean id="student" class="ex02.Student" scope="singleton" p:name="張君雅"
+		p:height="180" p:weight="80" p:birthday-ref="birthday" p:examDate-ref="examDate"
+		p:hobby-ref="hobbies" p:talent-ref="talent1" p:pet-ref="petmap" p:nullObj="#{null}">
+	</bean>
+</beans>
